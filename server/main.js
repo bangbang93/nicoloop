@@ -31,7 +31,7 @@ Meteor.publish('userData', function(){
 });
 Meteor.publish('topScore', function(){
     return topScore.find({},{
-        sort: {score: 1},
+        sort: {score: -1},
         limit: 10
     });
 });

@@ -38,6 +38,7 @@
         <div onclick="Meteor.loginWithWeibo()"><a href="#">用新浪微博登录以记录成绩</a></div>
         {{/if}}
         <div><span id="online">当前在线{{onlineUser}}</span></div>
+        <div><span>循环次数前十名</span></div>
         {{#each topScores}}
         <div class="top-player">@{{username}}(x{{score}})</div>
         {{/each}}

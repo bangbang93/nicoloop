@@ -12,14 +12,13 @@ Template.top.user = function(){
 
 Template.top.onlineUser = function(){
     return connections.find({}).count();
-}
+};
 
 Template.controller.repeatTime = function(){
     return Session.get('playCount');
 };
 
 Deps.autorun(function(){
-    var userId = Meteor.userId();
     var playCount = topScore.findOne({_id:Meteor.userId()})|| 0;
     if (typeof playCount == 'object'){
         playCount = playCount.score;
@@ -116,20 +115,22 @@ Meteor.startup(function(){
         Session.set('playCount', Session.get('playCount') + 1);
         $('#playcount').text("× " + Session.get('playCount'));
         Session.set('playCount', Session.get('playCount'));
-        if (!!topScore.findOne({_id: Meteor.user()._id})){
-            topScore.update({
-                _id: Meteor.user()._id
-            },{
-                $set:{
-                    score: Session.get('playCount')
-                }
-            });
-        } else {
-            topScore.insert({
-                _id: Meteor.user()._id,
-                score: Session.get('playCount'),
-                username: Meteor.user().profile.name
-            });
+        if (!!Meteor.userId()){
+            if (!!topScore.findOne({_id: Meteor.userId()})){
+                topScore.update({
+                    _id: Meteor.user()._id
+                },{
+                    $set:{
+                        score: Session.get('playCount')
+                    }
+                });
+            } else {
+                topScore.insert({
+                    _id: Meteor.user()._id,
+                    score: Session.get('playCount'),
+                    username: Meteor.user().profile.name
+                });
+            }
         }
 
         if (autoReplay) {

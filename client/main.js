@@ -34,6 +34,7 @@ Meteor.startup(function(){
     Meteor.subscribe('getDanmuku');
     Meteor.subscribe('topScore');
     Meteor.subscribe('userData');
+    Meteor.subscribe('userScore');
     Meteor.subscribe('connections');
 
     sendDamuku = function (time, commit){

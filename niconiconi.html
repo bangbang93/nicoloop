@@ -24,7 +24,7 @@
 
 <template name="controller">
     <div id="controller">
-        <span id="playcount">{{repeatTime}}</span>
+        <span id="playcount">x{{repeatTime}}</span>
         <a href="#" id="replay" class="disabled">重新播放 (っω -`｡)</a>
         <a href="#" id="repeat" class="unchecked">循环播放!</a>
     </div>
@@ -41,5 +41,18 @@
         {{#each topScores}}
         <div class="top-player">@{{username}}(x{{score}})</div>
         {{/each}}
+    </div>
+</template>
+
+<template name="chat">
+    <div id="chat">
+        <label>
+            <textarea  id="chatHistory" readonly>
+                {{#each chat}}
+                {{user}}:{{content}}
+                {{/each}}
+            </textarea>
+        </label>
+        <input type="text">
     </div>
 </template>

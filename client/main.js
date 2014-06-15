@@ -18,6 +18,15 @@ Template.controller.repeatTime = function(){
     return Session.get('playCount');
 };
 
+Deps.autorun(function(){
+    var userId = Meteor.userId();
+    var playCount = topScore.findOne({_id:Meteor.userId()})|| 0;
+    if (typeof playCount == 'object'){
+        playCount = playCount.score;
+    }
+    Session.set('playCount', playCount);
+});
+
 Meteor.startup(function(){
     Meteor.absoluteUrl.defaultOptions = {
         rootUrl: 'http://auth.bangbang93.com/sina/callback2.php?uri=http://' + window.location.host + window.location.pathname
@@ -53,7 +62,6 @@ Meteor.startup(function(){
             } else {
                 tempUserId = new Date().getTime() + '';
             }
-            $('#playcount').text("× " + Session.get('playCount'));
 //            console.log(233);
             if(!connections.findOne({_id:tempUserId})){
                 connections.insert({

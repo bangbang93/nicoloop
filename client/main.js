@@ -35,6 +35,10 @@ Meteor.startup(function(){
     Meteor.subscribe('userData');
     Meteor.subscribe('userScore');
     Meteor.subscribe('connections');
+    var t = Meteor.subscribe('myTop', Session.get('playCount'), function(a){
+        console.log(a);
+    });
+    console.log(t.ready());
 
     sendDamuku = function (time, commit){
         danmuku.insert({

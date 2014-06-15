@@ -44,3 +44,17 @@ Meteor.publish('userScore', function(){
 Meteor.publish('connections', function(){
     return connections.find({});
 });
+
+Meteor.publish('myTop', function(score){
+    var top = topScore.find({}, {score :-1});
+    var n = 0;
+    for (var i in top){
+        if (top.hasOwnProperty(i)){
+            if (top[i] == score){
+                return n+1;
+            } else {
+                n++;
+            }
+        }
+    }
+});

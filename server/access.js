@@ -4,14 +4,17 @@
 
 Meteor.startup(function(){
     topScore.allow({
-        insert: function (userId){
+        insert: function (userId,doc){
             if (!!userId){
                 return true;
             }
         },
-        update: function (userId) {
+        update: function (userId, doc, fieldNames, modifier) {
             if (!!userId) {
-                return true;
+                var newScore = topScore.findOne({_id:userId}).score;
+                console.log(newScore);
+                console.log(modifier);
+                return (modifier.$set.score - newScore) == 1;
             }
         }
     });

@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+}
+
+video#nicoplayer {
+    background: grey;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+}
+
+div#controller {
+    background: whitesmoke;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+    right: 5%;
+    position: fixed;
+    top: 35%;
+}
+
+div#top {
+    background: whitesmoke;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+    left: 0;
+    position: fixed;
+    top: 0;
+}
+
+div#controller a, div#controller span {
+    color: #555;
+    display: inline-block;
+    font-size: 1.0em;
+    margin: 0;
+    padding: 8px;
+    text-decoration: none;
+}
+
+div#controller a:hover {
+    background: #E4F9FF;
+}
+
+div#controller span#playcount {
+    border-right: 1px solid #777;
+}
+
+div#controller a#replay {
+    border-left: 1px solid #777;
+    border-right: 1px solid #777;
+}
+
+div#controller a#repeat {
+    border-left: 1px solid #777;
+}
+
+div#controller a#replay.disabled {
+    background: #8A8A8A;
+    cursor: not-allowed;
+}
+
+div#controller a#replay.disabled:cover:after {
+    content: '请等到播放完成啦 > <';
+}
+
+div#controller a#repeat.checked {
+    background: #F87850;
+    color: white;
+}
+
+div#about {
+    background: whitesmoke;
+    bottom: 0;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+    line-height: 18px;
+    padding: 8px 12px;
+    position: fixed;
+    right: 0;
+}
+
+div#about a {
+    color: #55A;
+    text-decoration: none;
+}

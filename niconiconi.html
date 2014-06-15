@@ -1,0 +1,45 @@
+
+<head>
+    <meta charset="utf-8" />
+    <title>niconiconi</title>
+    <script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+</head>
+
+<body>
+<video id="nicoplayer" src="niconiconi.mp4" autoplay="autoplay">
+    Sorry, but your browser doesn't support the features that this page required.<br />
+    对不起, 但是您的浏览器不支持显示这个页面所必须的功能.<br />
+    對不起, 但是您的瀏覽器不支援顯示這個網頁所必須的功能
+</video>
+
+{{>controller}}
+
+{{>top}}
+
+<div id="about">
+    Designed by <a href="http://weibo.com/uncookie">@理子饼干</a> with HTML5, 使用了 <a href="http://weibo.com/lizeqiangd">@Lizeqiangd</a> 的视频<br />
+    Modded by <a href="http://weibo.com/bangbang93">@bangbang93</a>添加在线功能
+</div>
+</body>
+
+<template name="controller">
+    <div id="controller">
+        <span id="playcount">{{repeatTime}}</span>
+        <a href="#" id="replay" class="disabled">重新播放 (っω -`｡)</a>
+        <a href="#" id="repeat" class="unchecked">循环播放!</a>
+    </div>
+</template>
+
+<template name="top">
+    <div id="top">
+        {{#if user}}
+        <div><span>@{{user.profile.name}}</span></div>
+        {{else}}
+        <div onclick="Meteor.loginWithWeibo()"><a href="#">用新浪微博登录以记录成绩</a></div>
+        {{/if}}
+        <div><span id="online">当前在线{{onlineUser}}</span></div>
+        {{#each topScores}}
+        <div class="top-player">@{{username}}(x{{score}})</div>
+        {{/each}}
+    </div>
+</template>
